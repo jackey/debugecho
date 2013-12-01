@@ -2,24 +2,31 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtGui>
+#include <QDebug>
 
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class MainWindow : public QWidget
 {
     Q_OBJECT
     
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    
-private slots:
-    void on_okButton_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    QPushButton *exitBtn;
+    QTextEdit *logTxt;
+    QComboBox *tagListChbox;
+
+    QHBoxLayout *mainLayout;
+    QVBoxLayout *rightLayout;
+
+    // Select option for combox box
+    QStringList tagOptions;
+
+private slots:
+    void combox_box_selected(QString str);
+
 };
 
 #endif // MAINWINDOW_H
